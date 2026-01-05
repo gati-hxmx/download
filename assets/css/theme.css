@@ -1,0 +1,44 @@
+// Theme toggle (shared)
+// - Stores user choice in localStorage ("light" | "dark")
+// - If no choice: follows OS setting
+(() => {
+  const KEY = "theme"; // "light" | "dark" | null
+  const root = document.documentElement;
+
+  function systemTheme() {
+    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function apply(theme) {
+    if (theme === "light" || theme === "dark") {
+      root.setAttribute("data-theme", theme);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    // update icon state
+    const active = root.getAttribute("data-theme") || systemTheme();
+    document.querySelectorAll("[data-theme-icon]").forEach((el) => {
+      el.textContent = active === "dark" ? "☀️" : "🌙";
+    });
+  }
+
+  // Initial apply
+  const saved = localStorage.getItem(KEY);
+  apply(saved);
+
+  // Bind toggle(s)
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || systemTheme();
+      const next = current === "dark" ? "light" : "dark";
+      localStorage.setItem(KEY, next);
+      apply(next);
+    });
+  });
+
+  // If user hasn't chosen, respond to OS changes live
+  const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+  mq?.addEventListener?.("change", () => {
+    if (!localStorage.getItem(KEY)) apply(null);
+  });
+})();
