@@ -1,1 +1,123 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Translator - 詳細</title>
+
+  <style>
+    :root{
+      --bg:#f5f5f5;--surface:#fff;--text:#1c1c1c;--subtext:#5f6368;
+      --primary:#6750a4;--radius:16px;--shadow:0 2px 6px rgba(0,0,0,.08);
+      --border:rgba(0,0,0,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#121212;--surface:#1e1e1e;--text:#e6e6e6;--subtext:#9aa0a6;
+        --primary:#d0bcff;--shadow:0 4px 10px rgba(0,0,0,.4);
+        --border:rgba(255,255,255,.10);
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:var(--bg); color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      padding:36px 0 12px;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    }
+    h1{margin:0;font-size:28px;font-weight:650}
+    .lead{margin:6px 0 0;color:var(--subtext);line-height:1.7}
+    .top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .btn{
+      padding:10px 16px;border-radius:999px;font-size:14px;text-decoration:none;
+      border:1px solid transparent;cursor:pointer;transition:background .15s ease;white-space:nowrap;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn.primary{background:var(--primary);color:#fff}
+    .btn.primary:hover{opacity:.92}
+    .btn.outline{border-color:var(--primary);color:var(--primary);background:transparent}
+    .btn.outline:hover{background:rgba(103,80,164,.08)}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}
+    @media (max-width: 860px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:20px;border:1px solid var(--border);
+    }
+    h2{margin:0 0 10px;font-size:18px}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--subtext);line-height:1.8}
+    .shot{
+      width:100%;aspect-ratio:16/10;border-radius:14px;border:1px dashed var(--border);
+      display:flex;align-items:center;justify-content:center;color:var(--subtext);
+      background:rgba(0,0,0,.02);
+    }
+    .note{margin-top:10px;color:var(--subtext);font-size:13px;line-height:1.7}
+    .kv{display:grid;grid-template-columns:140px 1fr;gap:10px;margin-top:10px}
+    .k{color:var(--subtext);font-size:13px}
+    .v{font-size:14px}
+    footer{text-align:center;padding:40px 16px;color:var(--subtext);font-size:13px}
+    code{background:rgba(0,0,0,.06);padding:2px 6px;border-radius:8px}
+    @media (prefers-color-scheme: dark){code{background:rgba(255,255,255,.08)}}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Quick Translator</h1>
+        <p class="lead">
+          選択 → ショートカット一発で翻訳。解説・例文・返信文までまとめて生成します。
+          画像（スクショ）も放り込めば即翻訳。
+        </p>
+      </div>
+
+      <div class="top-actions">
+        <!-- TODO: ここをあなたの配布URLに差し替え -->
+        <a class="btn primary" href="https://github.com/USERNAME/REPO/releases" target="_blank">macOS 版</a>
+        <a class="btn outline" href="https://github.com/USERNAME/REPO/releases" target="_blank">Windows 版</a>
+        <a class="btn outline" href="../index.html">一覧へ</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>スクリーンショット</h2>
+        <div class="shot">ここにスクショ画像を置けます（後で差し替え）</div>
+        <p class="note">
+          スクショを追加する場合は <code>assets/img/</code> に画像を置き、
+          この枠を <code>&lt;img&gt;</code> に差し替えるだけでOKです。
+        </p>
+      </section>
+
+      <aside class="card">
+        <h2>主な機能</h2>
+        <ul>
+          <li>他言語 → 日本語翻訳（スラング対応）</li>
+          <li>解説・例文つき翻訳</li>
+          <li>ニュアンス別の複数表現提案</li>
+          <li>翻訳結果から返信文を生成</li>
+          <li>画像（OCR）翻訳</li>
+        </ul>
+
+        <div class="kv">
+          <div class="k">推奨</div><div class="v">macOS / Windows</div>
+          <div class="k">更新</div><div class="v">GitHub Releases</div>
+          <div class="k">注意</div><div class="v">初回のみ「開く」を許可</div>
+        </div>
+
+        <p class="note">
+          ※ 署名なしの場合、macOS / Windowsで警告が出ることがあります。
+          初回のみ許可すれば、以降は通常通り起動できます。
+        </p>
+      </aside>
+    </div>
+
+    <footer>© 2026 m4z1k</footer>
+  </div>
+</body>
+</html>
